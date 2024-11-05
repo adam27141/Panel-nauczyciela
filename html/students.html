@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Nauczyciela</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-header"></header>
+    <div class="center">
+      <div class="main-container">
+        <button class="remove-class-btn">Usun klase</button>
+        <select class="select-class">
+          <option value="notChosen">Wybierz klase</option>
+        </select>
+        <button class="add-class-btn">Dodaj klase</button>
+        <button class="remove-student-btn">Usun ucznia</button>
+        <button class="add-student-btn">Dodaj ucznia</button>
+        <button class="add-students-from-txt">
+          Dodaj liste uczniow z .txt
+        </button>
+        <input class="file-input" type="file" />
+        <div class="line"></div>
+
+        <div class="students-list"></div>
+      </div>
+    </div>
+
+    <div class="modal-add-classes">
+      <div class="modal-content">
+        <h2>Dodaj klase</h2>
+        <p>Nazwa klasy</p>
+        <input class="class-input" type="text" /><br />
+        <button class="add-btn-class">Dodaj</button>
+        <button class="cencel-class-btn">Anuluj</button>
+      </div>
+    </div>
+
+    <div class="modal-add-students">
+      <div class="modal-content">
+        <h2>Dodaj Ucznia</h2>
+        <p>Imie ucznia:</p>
+        <input class="name-input" type="text" /><br />
+        <p>Nazwisko Ucznia:</p>
+        <input class="surname-input" class="surname-input" type="text" /><br />
+        <button class="add-btn">Dodaj</button>
+        <button class="cencel-btn">Anuluj</button>
+      </div>
+    </div>
+
+    <div class="modal-remove-students">
+      <div class="modal-content">
+        <h2>Usun ucznia</h2>
+        <p>Numer z dziennika</p>
+        <input class="number-input" type="text" /><br />
+        <button class="remove-btn">Usuń</button>
+        <button class="cencel-remove-btn">Anuluj</button>
+      </div>
+    </div>
+
+    <div class="modal-add-studentsTxt">
+      <div class="modal-content">
+        <h2>Dodaj uczniów z pliku txt</h2>
+        <p>Uczniowie w pliku muszą wyglądać tak:</p>
+        <div class="students-how">
+          <p>Imie1 Nazwisko1</p>
+          <p>Imie2 Nazwisko2</p>
+          <p>...</p>
+        </div>
+        <button class="add-btn-fromtxt">Dodaj</button>
+        <button class="cencel-remove-btn-fromtxt">Anuluj</button>
+      </div>
+    </div>
+  </body>
+  <script src="/students.js"></script>
+</html>

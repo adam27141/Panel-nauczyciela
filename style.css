@@ -1,0 +1,338 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Abel", sans-serif;
+}
+
+/* Header */
+.top-header {
+  width: 100%;
+  height: 50px;
+  background-color: #ffaa00;
+}
+
+/* Main Page */
+/* Main Page */
+.panels-container {
+  width: 100%;
+  /* height: 100vh; */
+  margin-top: 100px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 300px 300px 300px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* Stylizacja linków wewnątrz paneli */
+.panels-container a {
+  text-decoration: none;
+  color: white; /* Ustawia kolor tekstu na biały */
+}
+
+/* Specyficzne ustawienia dla różnych stanów linku */
+.panels-container a:visited,
+.panels-container a:hover,
+.panels-container a:focus,
+.panels-container a:active {
+  text-decoration: none; /* Usuwa podkreślenie we wszystkich stanach */
+  color: white; /* Utrzymuje biały kolor tekstu */
+}
+
+.panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: 180px;
+  background-color: #ffaa00a1;
+  border-radius: 10px;
+  font-size: 30px;
+  color: white; /* Kolor tekstu biały */
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  gap: 10px;
+}
+
+.panel:first-child {
+  gap: 0px;
+}
+
+/* Stylizacja ikon paneli */
+.panel-icon-students,
+.panel-icon-grades,
+.panel-icon-days,
+.panel-icon-attendance {
+  -webkit-filter: drop-shadow(0px 8px 2px rgba(0, 0, 0, 0.404));
+  filter: drop-shadow(0px 4px 3px rgba(0, 0, 0, 0.404));
+}
+
+/* Specyficzne rozmiary ikon */
+.panel-icon-students {
+  width: 120px;
+  height: 120px;
+}
+
+.panel-icon-grades {
+  width: 100px;
+  height: 100px;
+}
+
+.panel-icon-days {
+  width: 95px;
+  height: 95px;
+}
+
+.panel-icon-attendance {
+  width: 95px;
+  height: 95px;
+}
+
+/* Students------------------------------------------------------------------------------------------------------------------------------------------------ */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container {
+  width: 95%;
+  height: 85vh;
+  margin-top: 30px;
+  background-color: rgba(128, 128, 128, 0.263);
+  border-radius: 10px;
+  position: relative;
+}
+
+.remove-student-btn {
+  position: absolute;
+  font-family: "Abel";
+  width: 110px;
+  height: 35px;
+  background-color: rgb(179, 13, 13);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add-student-btn {
+  position: absolute;
+  font-family: "Abel";
+  width: 110px;
+  height: 35px;
+  background-color: rgb(113, 179, 13);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  right: 120px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add-students-from-txt {
+  position: absolute;
+  font-family: "Abel";
+  width: 200px;
+  height: 35px;
+  background-color: rgb(209, 141, 5);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  right: 235px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* Styl okienka modalnego -------------------------------------------*/
+
+.modal-add-classes {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-add-students {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-add-students,
+.modal-add-classes,
+.modal-remove-students,
+.modal-add-studentsTxt p {
+  font-size: 20px;
+}
+
+.modal-add-studentsTxt {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-remove-students {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: 80%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.modal-content button {
+  margin: 10px 5px;
+  padding: 8px 16px;
+
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.add-btn,
+.remove-btn,
+.add-btn-class,
+.add-btn-fromtxt {
+  background-color: rgb(31, 156, 31);
+}
+
+.cencel-btn,
+.cencel-remove-btn,
+.cencel-class-btn,
+.cencel-remove-btn-fromtxt {
+  background-color: rgb(181, 42, 42);
+}
+
+.students-how {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(158, 158, 158);
+  position: absolute;
+  top: 45px;
+}
+
+.students-list {
+  font-size: 24px;
+  margin-top: 60px;
+  padding-left: 20px;
+  height: 75vh;
+  overflow: scroll;
+}
+
+.select-class {
+  position: absolute;
+  font-family: "Abel";
+  width: 110px;
+  height: 35px;
+  background-color: rgb(209, 141, 5);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  left: 120px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add-class-btn {
+  position: absolute;
+  font-family: "Abel";
+  width: 110px;
+  height: 35px;
+  background-color: rgb(209, 141, 5);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.remove-class-btn {
+  position: absolute;
+  font-family: "Abel";
+  width: 110px;
+  height: 35px;
+  background-color: rgb(209, 141, 5);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  left: 235px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.file-input {
+  display: none;
+}
