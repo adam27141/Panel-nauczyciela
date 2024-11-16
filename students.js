@@ -1,6 +1,12 @@
 class ClassRoom {
   constructor() {
-    this.Classes = [];
+    // localStorage.removeItem("classes");
+    const savedClasses = localStorage.getItem("classes");
+    this.Classes = savedClasses ? JSON.parse(savedClasses) : [];
+  }
+
+  saveToLocalStorage() {
+    localStorage.setItem("classes", JSON.stringify(this.Classes));
   }
 
   addClass(classname) {
@@ -9,7 +15,8 @@ class ClassRoom {
       students: [],
     };
 
-    this.Classes.push(classData);
+    this.Classes.push(classData); // Dodajemy poprawny obiekt
+    this.saveToLocalStorage();
     console.log(this.Classes);
   }
 
@@ -19,6 +26,7 @@ class ClassRoom {
         this.Classes.splice(i, 1);
       }
     }
+    this.saveToLocalStorage();
     console.log(this.Classes);
   }
 
@@ -30,12 +38,14 @@ class ClassRoom {
           number: studentNumber,
           name: name,
           surname: surname,
+          grades: [],
         };
         classData.students.push(student);
         this.sortAlphabetically(classData);
         this.updateStudentNumbers(classData);
       }
     });
+    this.saveToLocalStorage();
     console.log(this.Classes);
   }
 
@@ -47,6 +57,7 @@ class ClassRoom {
             classData.students.splice(index, 1);
             this.sortAlphabetically(classData);
             this.updateStudentNumbers(classData);
+            this.saveToLocalStorage();
             console.log(this.Classes);
           }
         });
@@ -114,6 +125,7 @@ class View {
 
     this.addEventListeners();
     this.listenIfSelectedClassChange();
+    this.renderClasses(classes.Classes);
   }
 
   addEventListeners() {
@@ -166,6 +178,7 @@ class View {
         this.selectClass.appendChild(optionClassElement);
 
         addClassFunction(classname);
+        this.renderClasses(classes.Classes);
         this.classInput.value = "";
         this.modalAddClasses.style.display = "none";
       } else {
@@ -180,28 +193,37 @@ class View {
 
       let options = this.selectClass.options;
 
-      for (let i = options.length - 1; i >= 0; i--) {
-        if (selectedOption === options[i].value) {
-          this.selectClass.remove(i);
+      if (selectedOption === "notChosen") {
+        alert("Nie wybrałes klasy");
+      } else {
+        for (let i = options.length - 1; i >= 0; i--) {
+          if (selectedOption === options[i].value) {
+            this.selectClass.remove(i);
+          }
         }
+        removeClassFunction(selectedOption);
+        this.renderClasses(classes.Classes);
+        this.renderStudents(classes.Classes);
       }
-      removeClassFunction(selectedOption);
-      this.renderStudents(classes.Classes);
-
-      // if (selectedOption === "notChosen") {
-      //   alert("Nie wybrałes klasy");
-      // } else {
-      //   for (let i = options.length - 1; i >= 0; i--) {
-      //     if (selectedOption === options[i].value) {
-      //       this.selectClass.remove(i);
-      //     }
-      //   }
-      //   removeClassFunction(selectedOption);
-      //   this.renderStudents(classes.Classes);
-      // }
     });
   }
 
+  renderClasses(classesArray) {
+    // Resetuj listę przed dodaniem nowych opcji
+    this.selectClass.innerHTML = ""; // Usuwa wszystkie istniejące opcje
+
+    let defaultOption = document.createElement("option");
+    defaultOption.value = "notChosen";
+    defaultOption.textContent = "Wybierz klase";
+    this.selectClass.appendChild(defaultOption);
+
+    classesArray.forEach((classData) => {
+      let optionElement = document.createElement("option");
+      optionElement.value = classData.name;
+      optionElement.textContent = classData.name;
+      this.selectClass.appendChild(optionElement);
+    });
+  }
   addStudentToClass(addStudentFunction) {
     this.agreeBtn.addEventListener("click", () => {
       let name = this.nameInput.value;
@@ -304,17 +326,13 @@ class View {
           const [name, surname] = line.trim().split(" ");
           if (name && surname) {
             const classname = this.selectClass.value;
-            console.log(`Dodawanie ucznia do klasy: ${classname}`);
             addStudentFunction(classname, name.trim(), surname.trim());
           }
         });
 
         if (this.selectClass.value) {
-          console.log("Classes przed renderowaniem:", classes.Classes);
-
           if (classes && Array.isArray(classes.Classes)) {
             this.renderStudents(classes.Classes);
-            console.log("Lista uczniów została zaktualizowana.");
           } else {
             console.error("Classes są niezdefiniowane lub nie są tablicą.");
           }
