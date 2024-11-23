@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Nauczyciela</title>
+    <link rel="stylesheet" href="/style-grades.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-header">
+      <a href="/html/index.html">
+        <img class="logo-img" src="/logo.png" alt="" />
+      </a>
+    </header>
+    <div class="center">
+      <div class="main-container">
+        <select class="select-class">
+          <option value="notChosen"></option>
+        </select>
+        <input class="file-input" type="file" />
+        <div class="line"></div>
+
+        <div class="students-list"></div>
+      </div>
+    </div>
+
+    <div class="modal-add-grade">
+      <div class="modal-content">
+        <h2>Dodaj Ocene</h2>
+        <select class="grade-input">
+          <option value="NotChosen">Wybierz Ocene</option>
+          <option value="1">1</option>
+          <option value="1+">1+</option>
+          <option value="2-">2-</option>
+          <option value="2">2</option>
+          <option value="2+">2+</option>
+          <option value="3-">3-</option>
+          <option value="3">3</option>
+          <option value="3+">3+</option>
+          <option value="4-">4-</option>
+          <option value="4">4</option>
+          <option value="4+">4+</option>
+          <option value="5-">5-</option>
+          <option value="5">5</option>
+          <option value="5+">5+</option>
+          <option value="6-">6-</option>
+          <option value="6">6</option>
+        </select>
+        <button class="add-btn-grade">Dodaj</button>
+        <button class="cencel-grade-btn">Anuluj</button>
+      </div>
+    </div>
+
+    <div class="modal-remove-edit-grade">
+      <div class="modal-content">
+        <h2>Usun lub edytuj ocene</h2>
+        <button class="remove-grade-btn">Usuń</button>
+        <button class="edit-grade-btn">Edytuj</button>
+        <button class="cencel-edit-remove-btn">Anuluj</button>
+      </div>
+    </div>
+
+    <div class="modal-edit-grade">
+      <div class="modal-content">
+        <h2>Edytuj ocene</h2>
+        <select class="grade-edit-input">
+          <option value="NotChosen">Wybierz Ocene</option>
+          <option value="1">1</option>
+          <option value="1+">1+</option>
+          <option value="2-">2-</option>
+          <option value="2">2</option>
+          <option value="2+">2+</option>
+          <option value="3-">3-</option>
+          <option value="3">3</option>
+          <option value="3+">3+</option>
+          <option value="4-">4-</option>
+          <option value="4">4</option>
+          <option value="4+">4+</option>
+          <option value="5-">5-</option>
+          <option value="5">5</option>
+          <option value="5+">5+</option>
+          <option value="6-">6-</option>
+          <option value="6">6</option>
+        </select>
+        <button class="agree-edit-btn">Potwierdz</button>
+        <button class="cencel-edit-btn">Anuluj</button>
+      </div>
+    </div>
+
+    <div class="toast-box"></div>
+  </body>
+  <script type="module" src="/students-grades.js"></script>
+</html>

@@ -120,6 +120,7 @@ class View {
     this.removeBtn = document.querySelector(".remove-btn");
     this.numberInput = document.querySelector(".number-input");
 
+    this.toastBox = document.querySelector(".toast-box");
     //Student List
     this.studentListDiv = document.querySelector(".students-list");
 
@@ -138,7 +139,12 @@ class View {
     });
 
     this.addStudentBtn.addEventListener("click", () => {
-      this.modalAddStudent.style.display = "block";
+      let selectedOption = this.selectClass.value;
+      if (selectedOption === "notChosen") {
+        this.showToast("Nie wybrano klasy");
+      } else {
+        this.modalAddStudent.style.display = "block";
+      }
     });
 
     this.cencelBtn.addEventListener("click", () => {
@@ -146,7 +152,12 @@ class View {
     });
 
     this.removeStudentBtn.addEventListener("click", () => {
-      this.modalRemoveStudent.style.display = "block";
+      let selectedOption = this.selectClass.value;
+      if (selectedOption === "notChosen") {
+        this.showToast("Nie wybrano klasy");
+      } else {
+        this.modalRemoveStudent.style.display = "block";
+      }
     });
 
     this.cencelRemoveBtn.addEventListener("click", () => {
@@ -154,7 +165,12 @@ class View {
     });
 
     this.addStudentsTxt.addEventListener("click", () => {
-      this.modalAddStudentTxt.style.display = "block";
+      let selectedOption = this.selectClass.value;
+      if (selectedOption === "notChosen") {
+        this.showToast("Nie wybrano klasy");
+      } else {
+        this.modalAddStudentTxt.style.display = "block";
+      }
     });
 
     this.addStudentsBtnFromTxt.addEventListener("click", () => {
@@ -182,7 +198,7 @@ class View {
         this.classInput.value = "";
         this.modalAddClasses.style.display = "none";
       } else {
-        alert("Proszę wypełnić nazwę klasy.");
+        this.showToast("Prosze wypelnic nazwe klasy.");
       }
     });
   }
@@ -194,7 +210,7 @@ class View {
       let options = this.selectClass.options;
 
       if (selectedOption === "notChosen") {
-        alert("Nie wybrałes klasy");
+        this.showToast("Nie wybrano klasy");
       } else {
         for (let i = options.length - 1; i >= 0; i--) {
           if (selectedOption === options[i].value) {
@@ -234,7 +250,7 @@ class View {
         const hasNumbers = /\d/;
 
         if (hasNumbers.test(name) || hasNumbers.test(surname)) {
-          alert("Imię i nazwisko nie mogą zawierać cyfr.");
+          this.showToast("Imie i nazwisko nie moga zawierac cyfr.");
         } else {
           addStudentFunction(classname, name, surname);
           this.renderStudents(classes.Classes);
@@ -256,7 +272,7 @@ class View {
         this.numberInput.value = "";
         this.renderStudents(classes.Classes);
       } else {
-        alert("Proszę podać numer z dziennika.");
+        this.showToast("Prosze podac numer z dziennika.");
       }
     });
   }
@@ -279,13 +295,6 @@ class View {
       return;
     }
 
-    if (!Array.isArray(classesArray)) {
-      let pError = document.createElement("p");
-      pError.innerHTML = "Wystąpił błąd przy ładowaniu uczniów.";
-      studentListDiv.appendChild(pError);
-      return;
-    }
-
     let classFound = false;
 
     classesArray.forEach((oneClass) => {
@@ -298,6 +307,7 @@ class View {
         } else {
           oneClass.students.forEach((student) => {
             let studentPElement = document.createElement("p");
+            studentPElement.setAttribute("class", "student");
             studentPElement.textContent = `${student.number} - ${student.name} ${student.surname}`;
             studentListDiv.appendChild(studentPElement);
           });
@@ -345,6 +355,30 @@ class View {
       };
       reader.readAsText(file);
     });
+  }
+
+  showToast(message) {
+    let toast = document.createElement("div");
+    toast.classList.add("toast");
+    let icon = `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32px"
+    height="32px"
+    class="toast-icon"
+    viewBox="0 0 56 56"
+  >
+    <path
+      fill="orange"
+      d="M28 51.906c13.055 0 23.906-10.828 23.906-23.906c0-13.055-10.875-23.906-23.93-23.906C14.899 4.094 4.095 14.945 4.095 28c0 13.078 10.828 23.906 23.906 23.906m-.023-20.39c-1.243 0-1.922-.727-1.97-1.97L25.68 17.97c-.047-1.29.937-2.203 2.273-2.203c1.313 0 2.32.937 2.274 2.226l-.329 11.555c-.047 1.265-.75 1.969-1.921 1.969m0 8.625c-1.36 0-2.626-1.078-2.626-2.532s1.243-2.53 2.626-2.53c1.359 0 2.624 1.054 2.624 2.53c0 1.477-1.289 2.532-2.624 2.532"
+    />
+  </svg>`;
+
+    toast.innerHTML = `${icon}${message}`;
+    this.toastBox.appendChild(toast);
+
+    setTimeout(() => {
+      toast.remove();
+    }, 6000);
   }
 }
 
