@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Nauczyciela</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/days-schedule.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-header">
+      <a href="/html/index.html">
+        <img class="logo-img" src="/logo.png" alt="" />
+      </a>
+    </header>
+    <div class="center">
+      <div class="main-container">
+        <div class="table">
+          <div class="cell header hour">Godziny</div>
+          <div class="cell header">Poniedzialek</div>
+          <div class="cell header">Wtorek</div>
+          <div class="cell header">Sroda</div>
+          <div class="cell header">Czwartek</div>
+          <div class="cell header">Piatek</div>
+
+          <div class="cell hour">8:00 - 8:45</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">8:55 - 9:40</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">9:50 - 10:35</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">10:45 - 11:30</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">11:50 - 12:35</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">12:45 - 13:30</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">13:40 - 14:25</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+
+          <div class="cell hour">14:30 - 15:15</div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+          <div class="cell clickable"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-schedule">
+      <div class="modal-content">
+        <h2>Dodaj klase do rozpiski</h2>
+        <select class="select-class-schedule">
+          <option value="notChosen"></option>
+        </select>
+        <button class="schedule-agree">Potwierdz</button>
+        <button class="schedule-cancel">Anuluj</button>
+        <button class="schedule-clear">Wyczysc komorke</button>
+      </div>
+    </div>
+
+    <div class="toast-box"></div>
+  </body>
+  <script src="/js/days-schedul.js"></script>
+</html>
