@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Abel", sans-serif;
+}
+
+/* Header */
+.top-header {
+  width: 100%;
+  height: 50px;
+  background-color: #ffaa00;
+}
+
+/* Students------------------------------------------------------------------------------------------------------------------------------------------------ */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo-img {
+  width: 180px;
+  margin-left: 20px;
+}
+
+.main-container {
+  width: 95%;
+  height: 85vh;
+  margin-top: 30px;
+  background-color: rgba(128, 128, 128, 0.263);
+  border-radius: 10px;
+  position: relative;
+}
+
+/* Styl okienka modalnego -------------------------------------------*/
+
+.modal-add-classes {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-add-students {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-add-students,
+.modal-add-classes,
+.modal-remove-students,
+.modal-add-studentsTxt p {
+  font-size: 20px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: 80%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.modal-content button {
+  margin: 10px 5px;
+  padding: 8px 16px;
+
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.add-btn,
+.remove-btn,
+.add-btn-class,
+.add-btn-fromtxt {
+  background-color: rgb(31, 156, 31);
+}
+
+.cencel-btn,
+.cencel-remove-btn,
+.cencel-class-btn,
+.cencel-remove-btn-fromtxt {
+  background-color: rgb(181, 42, 42);
+}
+
+.students-how {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(158, 158, 158);
+  position: absolute;
+  top: 45px;
+}
+
+.students-list {
+  font-size: 24px;
+  margin-top: 60px;
+  padding-left: 20px;
+  height: 75vh;
+  overflow: scroll;
+}
+
+.select-class {
+  position: absolute;
+  font-family: "Abel";
+  width: 110px;
+  height: 35px;
+  background-color: rgb(209, 141, 5);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.file-input {
+  display: none;
+}
+
+.student {
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.addAttendanceButton {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 10px;
+  font-size: 20px;
+
+  background-color: #ffaa00c6;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.addAttendanceButton:active {
+  transform: scale(90%);
+  background-color: #a87716c6;
+}
+
+.attendance-container {
+  width: 70%;
+  height: auto;
+
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-right: 0px;
+  color: white;
+}
+
+.modal-add-attendance {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-remove-edit-attendance {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-edit-attendance {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cencel-attendance-btn,
+.remove-attendance-btn,
+.cencel-edit-btn,
+.cencel-edit-remove-btn {
+  background-color: rgb(181, 42, 42);
+}
+
+.add-btn-attendance,
+.edit-attendance-btn,
+.agree-edit-btn {
+  background-color: rgb(31, 156, 31);
+}
+
+.attendance-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 160px;
+  height: 60px;
+  background-color: green;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.grades-to-choose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.grade-to-choose {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: green;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content select {
+  width: 80%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.modal-content button {
+  margin: 10px 5px;
+  padding: 8px 16px;
+
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.arithmetic-mean {
+  font-size: 20px;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  color: black;
+  align-items: center;
+  /* border: 1px solid black; */
+  margin-right: 60px;
+}
+
+.toast-box {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.toast {
+  font-size: 18px;
+  width: 300px;
+  height: 60px;
+  background-color: white;
+  font-weight: bold;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+  position: relative;
+  transform: translateX(100%);
+  animation: moveleft 0.5s linear forwards;
+  z-index: 1000;
+}
+
+@keyframes moveleft {
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.toast-icon {
+  margin: 0 20px;
+}
+
+.toast::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: rgb(177, 131, 14);
+  animation: anim 6s linear forwards;
+}
+
+@keyframes anim {
+  100% {
+    width: 0;
+  }
+}
